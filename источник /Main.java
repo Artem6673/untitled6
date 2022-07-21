@@ -24,6 +24,10 @@ public class Main {
                 System.out.println("throws Exception");
                 flag = false;
             }
+            if ((num1 > 10) | (num1 < 1) | (num2 > 10) | (num2 < 1)){
+                System.out.println("throws Exception");
+                flag = false;
+            }
             if (flag) {
                 if (subStr[1].equals("+")) {
                     num3 = num1 + num2;
