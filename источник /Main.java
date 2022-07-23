@@ -1,8 +1,9 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         String line = sc.nextLine();
         String[] subStr;
@@ -21,12 +22,12 @@ public class Main {
                 num2 = Operation.convertRim(subStr[2]);
                 fladRim = true;
             } else {
-                System.out.println("throws Exception");
                 flag = false;
+                throw new IOException();
             }
             if ((num1 > 10) | (num1 < 1) | (num2 > 10) | (num2 < 1)){
-                System.out.println("throws Exception");
                 flag = false;
+                throw new IOException();
             }
             if (flag) {
                 if (subStr[1].equals("+")) {
@@ -38,12 +39,12 @@ public class Main {
                 } else if (subStr[1].equals("/")) {
                     num3 = num1 / num2;
                 } else {
-                    System.out.println("throws Exception");
+                    throw new IOException();
                 }
-                if (num3 < 0) {
-                    System.out.println("throws Exception");
+                if (num3 < 1 & fladRim) {
+                    throw new IOException();
                 } else if (num1 > 10 & num2 > 10) {
-                    System.out.println("throws Exception");
+                    throw new IOException();
                 } else if (fladRim) {
                     System.out.println(Operation.convertArab(num3));
                 } else {
@@ -51,7 +52,7 @@ public class Main {
                 }
             }
         } else{
-            System.out.println("throws Exception");
+            throw new IOException();
         }
     }
 }
@@ -185,7 +186,7 @@ class Operation {
                 }
             }
         }
-    return rim;
+        return rim;
     }
 
     static boolean isNumeric(String string) {
